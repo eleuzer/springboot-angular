@@ -1,0 +1,119 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Cadastro de Pedido</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="registerForm">
+                            <div class="row">
+                                <div class="col-md-2">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Código" disabled
+                                            name="id" formControlName="id" 
+                                            [(ngModel)]="dataSource.id">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">   
+                                <div class="col-md-4">
+                                    <mat-form-field>
+                                        <mat-label>Cliente</mat-label>
+                                        <mat-select [(ngModel)]="dataSource.pessoa" name="pessoa" formControlName="pessoa">
+                                            <mat-option *ngFor="let item of listClientes" [value]="item">
+                                                {{item.razaoSocial}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>        
+                            </div>
+
+                            <div class="row">  
+                                <div class="col-md-4">
+                                    <mat-form-field>
+                                        <mat-label>Produto</mat-label>
+                                        <mat-select required name="produto" formControlName="produto" 
+                                                    [(ngModel)]="newItemPedido.produto">
+                                            <mat-option *ngFor="let item of listProdutos" [value]="item">
+                                                {{item.descricao}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>                        
+                                <div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Quantidade" type="number" 
+                                            name="quantidade" formControlName="quantidade"
+                                            [(ngModel)]="newItemPedido.quantidade">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-2">
+                                    <button mat-raised-button type="button" 
+                                            class="btn btn-danger pull-right" 
+                                            (click)="adicionarItemPedido()">Adicionar</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10">
+                                    <div class="card">
+                                        <div class="card-header card-header-danger">
+                                            <h4 class="card-title">Lista Pedidos</h4>
+                                        </div>
+                                        <div class="card-body table-responsive">
+                                            <table class="table table-hover">
+                                                <thead class="text-danger">
+                                                    <th>Nome Produto</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Preço Unitario</th>
+                                                    <th>Valor Total</th>
+                                                    <th></th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let itemPedido of dataSource.itemPedidos;let i=index">
+                                                        <td>{{itemPedido.produto.descricao}}</td>
+                                                        <td>{{itemPedido.quantidade}}</td> 
+                                                        <td>{{itemPedido.produto.preco | currency:'BRL':true}}</td>
+                                                        <td>{{itemPedido.precoTotal | currency:'BRL':true}}</td>                        
+                                                        <td class="td-actions text-right">
+                                                            <button mat-raised-button type="button" 
+                                                                    matTooltip="Edit Task" 
+                                                                    [matTooltipPosition]="'above'" 
+                                                                    class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                                    (click)="editarItemPedido(promocaoProduto)">
+                                                                <i class="material-icons">edit</i>
+                                                            </button>
+                                                            <button mat-raised-button type="button" 
+                                                                    matTooltip="Excluir" [matTooltipPosition]="'above'"     
+                                                                    class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                                    (click)="removerItem(promocaoProduto)">
+                                                                <i class="material-icons">close</i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <button mat-raised-button type="submit" 
+                                    class="btn btn-danger pull-right"
+                                    (click)="salvar()">Salvar</button>
+                            <button mat-raised-button type="button" 
+                                    class="btn btn-default pull-right" 
+                                    (click)="cancelar()">Cancelar</button>
+                          <div class="clearfix"></div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Pedidos</h4>
+                        <ul class="nav nav-tabs justify-content-end" data-tabs="tabs">
+                            <li class="nav-item">
+                                <a mat-button class="nav-link active" [routerLink]="['/pedido-edit', '']"
+                                    data-toggle="tab">
+                                    <i class="material-icons">add</i> Adicionar Novo Pedido
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Código
+                                    </th>
+                                    <th>
+                                        Data
+                                    </th>
+                                    <th>
+                                        Valor Total
+                                    </th>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let pedido of listPedidos">
+                                        <td>
+                                            {{pedido.id}}
+                                        </td>
+                                        <td>
+                                            {{pedido.data | date: 'dd/MM/yyyy'}}
+                                        </td>
+                                        <td>
+                                            {{pedido.valorTotal  | currency:'BRL':true}}
+                                        </td>
+
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Editar"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon"
+                                                (click)="editar(pedido)">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remover"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                (click)="remover(pedido)">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Cadastro de Produto</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="registerForm">
+                            <div class="row">
+                                <div class="col-md-2">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Código" disabled
+                                            name="id" formControlName="id" 
+                                            [(ngModel)]="dataSource.id">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">   
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Descrição"
+                                             name="descricao" formControlName="descricao" 
+                                             [(ngModel)]="dataSource.descricao">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Preço" type="number"
+                                            name="preco" formControlName="preco" 
+                                            [(ngModel)]="dataSource.preco">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                          
+                            <button mat-raised-button type="submit" 
+                                    class="btn btn-danger pull-right"
+                                    (click)="salvar()">Salvar</button>
+                            <button mat-raised-button type="button" 
+                                    class="btn btn-default pull-right" 
+                                    (click)="cancelar()">Cancelar</button>
+                          <div class="clearfix"></div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </div>
+  
